@@ -1,0 +1,35 @@
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/components/another-component/another-component.html">
+
+<dom-module id="example-component">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <h1>Example</h1>
+        
+        <h2>List of elements</h2>
+        <template is="dom-repeat" items="{{elements}}" as="item" indexAs="index">
+            <another-component element="{{item}}" ident$="{{index}}"></another-component>
+        </template>
+
+    </template>
+    <script>
+        var fred = {"name": "fred"};
+        var tom = {"name": "tom"}
+
+        Polymer({
+            is: 'example-component',
+            properties: {
+                elements: {
+                    type: Array,
+                    value: [{"name": "Main1", "person": fred}, {"name": "Main2", "person": tom}, {"name": "Main3", "person": fred}],
+                    notify: true
+                }
+            }
+        });
+    </script>
+</dom-module>

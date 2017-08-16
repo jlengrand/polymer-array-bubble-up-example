@@ -1,0 +1,28 @@
+<link rel="import" href="/polymer/polymer.html">
+
+<dom-module id="another-component">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <h3>{{element.name}}</h3>
+        <h4>{{element.person.name}}</h4>
+        
+    </template>
+    <script>
+        Polymer({
+            is: 'another-component',
+            properties: {
+                element: {
+                    type: Object,
+                    reflectToAttribute: true,
+                    notify: true
+                }
+            },
+
+        });
+    </script>
+</dom-module>
