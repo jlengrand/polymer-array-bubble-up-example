@@ -27,6 +27,8 @@
 
             _changeName: function(){
                 console.log("changing name");
+                // this.dispatchEvent(new CustomEvent('kick', {detail: {kicked: true}}));
+                this.fire('kick', {kicked: true});
                 this.set('element.person', {"name": "bobby"});
                 this.notifyPath('element');
                 this.notifyPath('element.person');
