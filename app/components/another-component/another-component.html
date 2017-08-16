@@ -26,10 +26,11 @@
             },
 
             _changeName: function(){
+                console.log("changing name");
                 this.set('element.person', {"name": "bobby"});
-                this.notifyPath(element);
-                this.notifyPath(element.person);
-                
+                this.notifyPath('element');
+                this.notifyPath('element.person');
+                this.notifyPath('elements');           
             }
         });
     </script>
