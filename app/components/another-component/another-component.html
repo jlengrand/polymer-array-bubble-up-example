@@ -1,4 +1,6 @@
 <link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/paper-button/paper-button.html">
+
 
 <dom-module id="another-component">
     <template>
@@ -10,6 +12,7 @@
 
         <h3>{{element.name}}</h3>
         <h4>{{element.person.name}}</h4>
+        <paper-button on-tap="_changeName">Change name!</paper-button>
         
     </template>
     <script>
@@ -18,11 +21,16 @@
             properties: {
                 element: {
                     type: Object,
-                    reflectToAttribute: true,
                     notify: true
                 }
             },
 
+            _changeName: function(){
+                this.set('element.person', {"name": "bobby"});
+                this.notifyPath(element);
+                this.notifyPath(element.person);
+                
+            }
         });
     </script>
 </dom-module>
