@@ -13,7 +13,7 @@
         
         <h2>List of elements</h2>
         <template is="dom-repeat" items="{{elements}}" as="item" indexAs="index">
-            <another-component element="{{item}}" ident$="{{index}}"></another-component>
+            <another-component element="{{item}}" index={{index}} ident$="{{index}}"></another-component>
         </template>
 
     </template>
@@ -29,7 +29,22 @@
                     value: [{"name": "Main1", "person": fred}, {"name": "Main2", "person": tom}, {"name": "Main3", "person": fred}],
                     notify: true
                 }
+            }, 
+
+            attached: function(){
+                this.addEventListener('change-name', function (e) {
+                    console.log("fired");
+                    
+                    this.elements[e.detail.index].person.name = e.detail.newPersonName;
+  
+                    for(var i =0; i< this.elements.length; i++){
+                        this.notifyPath('elements.'+i+'.person.name'); 
+                    }
+                    console.log(this.elements);
+           
+                });
             }
+
         });
 </script>
 </dom-module>
