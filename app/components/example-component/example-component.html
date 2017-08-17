@@ -32,17 +32,16 @@
             }, 
 
             attached: function(){
-                this.addEventListener('change-name', function (e) {
-                    console.log("fired");
-                    
-                    this.elements[e.detail.index].person.name = e.detail.newPersonName;
-  
-                    for(var i =0; i< this.elements.length; i++){
-                        this.notifyPath('elements.'+i+'.person.name'); 
-                    }
+                this.addEventListener('change-name', function (e) {  
+                    this._updateNames();
                     console.log(this.elements);
-           
                 });
+            }, 
+
+            _updateNames: function() {
+                for(var i =0; i< this.elements.length; i++){
+                    this.notifyPath('elements.'+i+'.person'); 
+                }
             }
 
         });

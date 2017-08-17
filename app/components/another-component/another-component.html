@@ -24,9 +24,10 @@
                     notify: true
                 }
             },
-
+ 
             _changeName: function(){
-                this.fire('change-name', {"newPersonName" : "bobby","index":this.index });      
+                this.element.person.name = "bobby";
+                this.fire('change-name', {});      
             }
         });
     </script>
